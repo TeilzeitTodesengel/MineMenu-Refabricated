@@ -5,8 +5,9 @@
   "name": "MineMenuFabric",
   "description": "MineMenu for fabric",
   "authors": [
-    "UltraBlackLinux",
-    "ClockwerkKaiser"
+    "ClockwerkKaiser",
+    "Mauchin",
+    "UltraBlackLinux"
   ],
   "contributors": [
     "Quentiiiin",
@@ -14,8 +15,8 @@
     "Redo11"
   ],
   "contact": {
-    "homepage": "https://modrinth.com/mod/minemenufabric",
-    "issues": "https://github.com/UltraBlackLinux/MineMenuFabric/issues#oh-no-not-again"
+    "homepage": "https://github.com/ClockwerkKaiser/MineMenuFabric",
+    "issues": "https://github.com/ClockwerkKaiser/MineMenuFabric/issues"
   },
   "license": "MIT",
   "icon": "assets/minemenufabric/icon.png",
