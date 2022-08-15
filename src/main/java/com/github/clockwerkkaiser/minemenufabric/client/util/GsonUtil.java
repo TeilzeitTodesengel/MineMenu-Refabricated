@@ -1,10 +1,10 @@
-package me.ultrablacklinux.minemenufabric.client.util;
+package com.github.clockwerkkaiser.minemenufabric.client.util;
 
+import com.github.clockwerkkaiser.minemenufabric.client.config.Config;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-import me.ultrablacklinux.minemenufabric.client.MineMenuFabricClient;
-import me.ultrablacklinux.minemenufabric.client.config.Config;
+import com.github.clockwerkkaiser.minemenufabric.client.MineMenuFabricClient;
 
 import java.util.ArrayList;
 import java.util.Collections;

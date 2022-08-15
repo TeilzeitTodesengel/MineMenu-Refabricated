@@ -1,10 +1,10 @@
-package me.ultrablacklinux.minemenufabric.client.config.modmenu;
+package com.github.clockwerkkaiser.minemenufabric.client.config.modmenu;
 
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.autoconfig.AutoConfig;
-import me.ultrablacklinux.minemenufabric.client.config.Config;
+import com.github.clockwerkkaiser.minemenufabric.client.config.Config;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 

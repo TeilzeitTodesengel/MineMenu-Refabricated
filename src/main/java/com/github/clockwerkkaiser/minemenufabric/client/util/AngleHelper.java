@@ -1,4 +1,4 @@
-package me.ultrablacklinux.minemenufabric.client.util;
+package com.github.clockwerkkaiser.minemenufabric.client.util;
 
 import net.minecraft.client.MinecraftClient;
 

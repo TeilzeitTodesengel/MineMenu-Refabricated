@@ -1,4 +1,4 @@
-package me.ultrablacklinux.minemenufabric.client.config;
+package com.github.clockwerkkaiser.minemenufabric.client.config;
 
 import com.google.gson.JsonObject;
 import me.shedaniel.autoconfig.AutoConfig;

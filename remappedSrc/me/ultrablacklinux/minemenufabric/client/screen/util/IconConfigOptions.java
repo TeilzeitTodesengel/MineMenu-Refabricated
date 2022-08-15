@@ -1,4 +1,4 @@
-package me.ultrablacklinux.minemenufabric.client.screen.util;
+package me.github.clockwerkkaiser.minemenufabric.client.screen.util;
 
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;

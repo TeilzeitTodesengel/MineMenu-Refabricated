@@ -1,9 +1,9 @@
-package me.ultrablacklinux.minemenufabric.client.util;
+package com.github.clockwerkkaiser.minemenufabric.client.util;
 
+import com.github.clockwerkkaiser.minemenufabric.client.screen.MineMenuSettingsScreen;
 import com.mojang.authlib.GameProfile;
 import me.shedaniel.math.Color;
-import me.ultrablacklinux.minemenufabric.client.MineMenuFabricClient;
-import me.ultrablacklinux.minemenufabric.client.screen.MineMenuSettingsScreen;
+import com.github.clockwerkkaiser.minemenufabric.client.MineMenuFabricClient;
 import net.minecraft.block.AbstractSkullBlock;
 import net.minecraft.block.entity.SkullBlockEntity;
 import net.minecraft.client.MinecraftClient;

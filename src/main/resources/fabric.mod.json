@@ -21,10 +21,10 @@
   "icon": "assets/minemenufabric/icon.png",
   "entrypoints": {
     "client": [
-      "me.ultrablacklinux.minemenufabric.client.MineMenuFabricClient"
+      "com.github.clockwerkkaiser.minemenufabric.client.MineMenuFabricClient"
     ],
     "modmenu": [
-      "me.ultrablacklinux.minemenufabric.client.config.modmenu.ModMenuEntry"
+      "com.github.clockwerkkaiser.minemenufabric.client.config.modmenu.ModMenuEntry"
     ]
   },
   "mixins": [

@@ -1,15 +1,15 @@
-package me.ultrablacklinux.minemenufabric.client.screen;
+package me.github.clockwerkkaiser.minemenufabric.client.screen;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.shedaniel.autoconfig.AutoConfig;
-import me.ultrablacklinux.minemenufabric.client.MineMenuFabricClient;
-import me.ultrablacklinux.minemenufabric.client.config.Config;
-import me.ultrablacklinux.minemenufabric.client.util.AngleHelper;
-import me.ultrablacklinux.minemenufabric.client.util.GsonUtil;
-import me.ultrablacklinux.minemenufabric.client.util.RandomUtil;
-import me.ultrablacklinux.minemenufabric.access.KeyBindingInterface;
+import me.github.clockwerkkaiser.minemenufabric.client.MineMenuFabricClient;
+import me.github.clockwerkkaiser.minemenufabric.client.config.Config;
+import me.github.clockwerkkaiser.minemenufabric.client.util.AngleHelper;
+import me.github.clockwerkkaiser.minemenufabric.client.util.GsonUtil;
+import me.github.clockwerkkaiser.minemenufabric.client.util.RandomUtil;
+import me.github.clockwerkkaiser.minemenufabric.access.KeyBindingInterface;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.gui.screen.Screen;
@@ -30,8 +30,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
-import static me.ultrablacklinux.minemenufabric.client.MineMenuFabricClient.*;
 
 
 /**

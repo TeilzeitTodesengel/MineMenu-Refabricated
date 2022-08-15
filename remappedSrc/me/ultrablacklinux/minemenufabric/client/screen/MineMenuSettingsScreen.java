@@ -1,16 +1,16 @@
-package me.ultrablacklinux.minemenufabric.client.screen;
+package me.github.clockwerkkaiser.minemenufabric.client.screen;
 
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import me.shedaniel.autoconfig.AutoConfig;
-import me.ultrablacklinux.minemenufabric.client.MineMenuFabricClient;
-import me.ultrablacklinux.minemenufabric.client.config.Config;
-import me.ultrablacklinux.minemenufabric.client.screen.util.IconConfigOptions;
-import me.ultrablacklinux.minemenufabric.client.screen.util.MenuTypes;
-import me.ultrablacklinux.minemenufabric.client.util.GsonUtil;
-import me.ultrablacklinux.minemenufabric.client.util.RandomUtil;
+import me.github.clockwerkkaiser.minemenufabric.client.MineMenuFabricClient;
+import me.github.clockwerkkaiser.minemenufabric.client.config.Config;
+import me.github.clockwerkkaiser.minemenufabric.client.screen.util.IconConfigOptions;
+import me.github.clockwerkkaiser.minemenufabric.client.screen.util.MenuTypes;
+import me.github.clockwerkkaiser.minemenufabric.client.util.GsonUtil;
+import me.github.clockwerkkaiser.minemenufabric.client.util.RandomUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ScreenTexts;
@@ -30,8 +30,6 @@ import net.minecraft.util.math.MathHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static me.ultrablacklinux.minemenufabric.client.MineMenuFabricClient.*;
 
 @SuppressWarnings("ALL")
 public class MineMenuSettingsScreen extends Screen {

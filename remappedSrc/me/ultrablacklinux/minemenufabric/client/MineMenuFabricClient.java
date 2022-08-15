@@ -1,12 +1,12 @@
-package me.ultrablacklinux.minemenufabric.client;
+package me.github.clockwerkkaiser.minemenufabric.client;
 
 import com.google.gson.JsonObject;
 import me.shedaniel.autoconfig.AutoConfig;
-import me.ultrablacklinux.minemenufabric.client.config.Config;
-import me.ultrablacklinux.minemenufabric.client.screen.MineMenuSelectScreen;
-import me.ultrablacklinux.minemenufabric.client.screen.MineMenuSettingsScreen;
-import me.ultrablacklinux.minemenufabric.client.screen.util.Tips;
-import me.ultrablacklinux.minemenufabric.client.util.GsonUtil;
+import me.github.clockwerkkaiser.minemenufabric.client.config.Config;
+import me.github.clockwerkkaiser.minemenufabric.client.screen.MineMenuSelectScreen;
+import me.github.clockwerkkaiser.minemenufabric.client.screen.MineMenuSettingsScreen;
+import me.github.clockwerkkaiser.minemenufabric.client.screen.util.Tips;
+import me.github.clockwerkkaiser.minemenufabric.client.util.GsonUtil;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

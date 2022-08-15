@@ -1,8 +1,8 @@
-package me.ultrablacklinux.minemenufabric.mixin;
+package com.github.clockwerkkaiser.minemenufabric.mixin;
 
-import me.ultrablacklinux.minemenufabric.client.config.Config;
-import me.ultrablacklinux.minemenufabric.client.screen.MineMenuSelectScreen;
-import me.ultrablacklinux.minemenufabric.access.KeyBindingInterface;
+import com.github.clockwerkkaiser.minemenufabric.access.KeyBindingInterface;
+import com.github.clockwerkkaiser.minemenufabric.client.config.Config;
+import com.github.clockwerkkaiser.minemenufabric.client.screen.MineMenuSelectScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import org.spongepowered.asm.mixin.Mixin;
