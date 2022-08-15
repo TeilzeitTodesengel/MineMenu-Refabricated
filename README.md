@@ -13,4 +13,4 @@ Thanks to Girafi for the original mod [❤️](https://www.curseforge.com/minecr
 Thanks to UltraBlackLinux for the initial Fabric port of the MineMenu [❤️](https://github.com/UltraBlackLinux)  
 Thanks to Mauchin for doing the bulk of the original 1.18 port in his fork [❤️](https://github.com/Mauchin)
 
-**I have decided to try updating this for 1.18.2+ as a personal learning project. Please report any issues you find, but understand that I am a total Java newbie.** ~ClockwerkKaiser
+**I have decided to try updating this for 1.18.2+ as a personal learning project. Please report any issues you find. I'll try my best to resolve them. But, understand that I am a total Java newbie.** ~ClockwerkKaiser
