@@ -5,7 +5,8 @@
   "name": "MineMenuFabric",
   "description": "MineMenu for fabric",
   "authors": [
-    "UltraBlackLinux"
+    "UltraBlackLinux",
+    "ClockwerkKaiser"
   ],
   "contributors": [
     "Quentiiiin",
@@ -30,8 +31,11 @@
     "MineMenuFabric.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.12.7",
-    "minecraft": "1.18.x",
-    "cloth-config2": ">=6.0.42"
+    "fabricloader": ">=0.14.9",
+    "minecraft": "1.18.2",
+    "cloth-config2": ">=6.2.62"
+  },
+  "recommends": {
+    "modmenu": "3.2.3"
   }
 }

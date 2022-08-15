@@ -503,7 +503,7 @@ public class MineMenuSettingsScreen extends Screen {
         this.iconItem = iconData.get("iconItem").getAsString();
         this.customModelData = iconData.get("customModelData").getAsInt();
         this.itemTypes = MenuTypes.valueOf(data.get("type").getAsString().toUpperCase());
-        this.keyBindings = Arrays.asList(client.options.keysAll);
+        this.keyBindings = Arrays.asList(client.options.allKeys);
 
         switch (itemTypes) {
             case PRINT:

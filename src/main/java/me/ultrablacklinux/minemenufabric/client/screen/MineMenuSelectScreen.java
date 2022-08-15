@@ -71,7 +71,7 @@ public class MineMenuSelectScreen extends Screen {
     }
 
     protected void init() {
-        keyBindings = Arrays.asList(client.options.keysAll);
+        keyBindings = Arrays.asList(client.options.allKeys);
         repeatButton = this.addDrawableChild(new ButtonWidget(this.width / 2 - 75, this.height - 35, 150, 20,
                 new TranslatableText("minemenu.gui.repeat"), (buttonWidget) -> {
             if (repeatData != null) this.handleTypes(repeatData);
@@ -225,7 +225,7 @@ public class MineMenuSelectScreen extends Screen {
     }
 
     @Override
-    public boolean isPauseScreen() {
+    public boolean shouldPause() {
         return false;
     }
 
@@ -395,7 +395,7 @@ public class MineMenuSelectScreen extends Screen {
         }
     }
 
-    private static void close() {
+    public void close() {
         MinecraftClient.getInstance().setScreenAndRender(null);
         datapath = new ArrayList<>();
     }
