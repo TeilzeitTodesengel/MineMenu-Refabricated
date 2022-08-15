@@ -5,8 +5,12 @@
 
 # MineMenu(for)Fabric
 
-**Note: This project is completely seperate from Girafi's MineMenu mod - This is only a very customized port for the Fabric-modloader!**
+**Note: This project is completely separate from Girafi's MineMenu mod - This is only a very customized port for the Fabric-modloader!**
 
 MineMenuFabric assists you with sending single or multiple chat messages, queuing them, copying text, opening links and even pressing (un)bound keybinds in a simple, yet powerful circular and customizable menu with support for categories.
 
-Thanks to Girafi for the original mod [❤️](https://www.curseforge.com/minecraft/mc-mods/minemenu)
+Thanks to Girafi for the original mod [❤️](https://www.curseforge.com/minecraft/mc-mods/minemenu)  
+Thanks to UltraBlackLinux for the initial Fabric port of the MineMenu [❤️](https://github.com/UltraBlackLinux)  
+Thanks to Mauchin for doing the bulk of the original 1.18 port in his fork [❤️](https://github.com/Mauchin)
+
+**I have decided to try updating this for 1.18.2+ as a personal learning project. Please report any issues you find, but understand that I am a total Java newbie.** ~ClockwerkKaiser
