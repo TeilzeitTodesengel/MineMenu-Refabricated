@@ -13,7 +13,6 @@ import com.github.clockwerkkaiser.minemenufabric.client.util.GsonUtil;
 import com.github.clockwerkkaiser.minemenufabric.client.util.RandomUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.ScreenTexts;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.SliderWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -21,9 +20,8 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.LiteralText;
+import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.MathHelper;
 
@@ -65,7 +63,7 @@ public class MineMenuSettingsScreen extends Screen {
     private int delayTime = 10;
 
     public MineMenuSettingsScreen(Screen parent, boolean repeat) {
-        super(new TranslatableText("minemenu.settings.title"));
+        super(Text.translatable("minemenu.settings.title"));
         this.parent = parent;
         localDPath = repeat ? repeatDatapath : datapath;
         this.updateData();
@@ -93,7 +91,7 @@ public class MineMenuSettingsScreen extends Screen {
         //---------------------------- NAME INPUT
 
         this.itemName = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, 40, 200, 20,
-                new TranslatableText("minemenu.settings.name"));
+                Text.translatable("minemenu.settings.name"));
         this.itemName.setMaxLength(32500);
         this.itemName.setChangedListener(this::updateInput);
         this.addDrawableChild(this.itemName);
@@ -101,7 +99,7 @@ public class MineMenuSettingsScreen extends Screen {
         //---------------------------- ICON INPUT
 
         this.iconDataText = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, 101, 200, 20,
-                        new TranslatableText("minemenu.settings.icon.data"));
+                Text.translatable("minemenu.settings.icon.data"));
         this.iconDataText.setMaxLength(32500);
         this.iconDataText.setChangedListener(this::saveIcon);
         this.addDrawableChild(this.iconDataText);
@@ -125,7 +123,7 @@ public class MineMenuSettingsScreen extends Screen {
         //---------------------------- DATA INIPUT/TYPE
 
         this.itemData = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, 141, 200, 20,
-                new TranslatableText("minemenu.settings.data"));
+                Text.translatable("minemenu.settings.data"));
         this.itemData.setMaxLength(32500);
         this.addDrawableChild(this.itemData);
 
@@ -148,17 +146,17 @@ public class MineMenuSettingsScreen extends Screen {
         }
 
         this.delayTimeSlider = this.addDrawableChild(new SliderWidget(this.width / 2 - 100, 160, 200,
-                20, LiteralText.EMPTY, (this.delayTime - 10) / (25001 - 10)) {
+                20, Text.empty(), (this.delayTime - 10) / (25001 - 10)) {
             { //hippedy, hoppedy, your code is now my property
                 this.updateMessage();
             }
 
             protected void updateMessage() {
                 if (this.value == 1) {
-                    this.setMessage(new TranslatableText("minemenu.gui.toggle"));
+                    this.setMessage(Text.translatable("minemenu.gui.toggle"));
                 }
                 else {
-                    this.setMessage(new TranslatableText("minemenu.setting.input.key.delay",
+                    this.setMessage(Text.translatable("minemenu.setting.input.key.delay",
                             MineMenuSettingsScreen.this.delayTime));
                 }
             }
@@ -204,7 +202,7 @@ public class MineMenuSettingsScreen extends Screen {
             this.usedBinding = keyBindings.get(index - 1);
         }
 
-        this.keyBindButton.setMessage(new TranslatableText(usedBinding.getTranslationKey()));
+        this.keyBindButton.setMessage(Text.translatable(usedBinding.getTranslationKey()));
     }
 
     private void updateInput() {
@@ -269,7 +267,7 @@ public class MineMenuSettingsScreen extends Screen {
             case KEYSELECT:
                 this.itemData.setEditable(false);
                 try {
-                    this.keyBindButton.setMessage(new TranslatableText(this.usedBinding.getTranslationKey()));
+                    this.keyBindButton.setMessage(Text.translatable(this.usedBinding.getTranslationKey()));
                 } catch (Exception ingore) {}
                 break;
 
@@ -357,13 +355,13 @@ public class MineMenuSettingsScreen extends Screen {
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         this.renderBackground(matrices);
         drawCenteredText(matrices, this.textRenderer, this.title, this.width / 2, 17, 16777215);
-        drawTextWithShadow(matrices, this.textRenderer, new TranslatableText("minemenu.setting.input.name"),
+        drawTextWithShadow(matrices, this.textRenderer, Text.translatable("minemenu.setting.input.name"),
                 this.width / 2 - 100, 30, 0xFFa0a0a0);
-        drawTextWithShadow(matrices, this.textRenderer, new TranslatableText("minemenu.setting.input.icon"),
+        drawTextWithShadow(matrices, this.textRenderer, Text.translatable("minemenu.setting.input.icon"),
                 this.width / 2 - 100, 70, 0xFFa0a0a0);
         drawTextWithShadow(matrices, this.textRenderer, this.keyBindButton.visible ?
-                        new TranslatableText("minemenu.setting.input.key") :
-                        new TranslatableText("minemenu.setting.input.text"),
+                        Text.translatable("minemenu.setting.input.key") :
+                        Text.translatable("minemenu.setting.input.text"),
                 this.width / 2 - 100, 131, 0xFFa0a0a0);
 
         if (Config.get().minemenuFabric.showTips) {
@@ -409,7 +407,7 @@ public class MineMenuSettingsScreen extends Screen {
 
         if (isRepeatEdit) {
             this.updateData();
-            MineMenuSelectScreen.updateRepeatData(itemTypes.getName().asString().toLowerCase(), localData);
+            MineMenuSelectScreen.updateRepeatData(itemTypes.getName().getString().toLowerCase(), localData);
             if (itemTypes == MenuTypes.EMPTY) {
                 repeatData = null;
                 repeatDatapath = null;
@@ -417,7 +415,7 @@ public class MineMenuSettingsScreen extends Screen {
             isRepeatEdit = false;
 
             client.setScreenAndRender(new MineMenuSelectScreen(MineMenuFabricClient.minemenuData,
-                    new TranslatableText("minemenu.default.title").getString(), null));
+                    Text.translatable("minemenu.default.title").getString(), null));
         }
         else this.client.setScreenAndRender(this.parent);
 

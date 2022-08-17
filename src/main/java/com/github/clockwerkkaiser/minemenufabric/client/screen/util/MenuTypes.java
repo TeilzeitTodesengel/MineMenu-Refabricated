@@ -1,7 +1,6 @@
 package com.github.clockwerkkaiser.minemenufabric.client.screen.util;
 
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Nameable;
 
 public enum MenuTypes implements Nameable {
@@ -30,6 +29,6 @@ public enum MenuTypes implements Nameable {
 
     @Override
     public Text getName() {
-        return new TranslatableText("minemenu.setting.MenuTypes." + this.name().charAt(0) + this.name().substring(1).toLowerCase());
+        return Text.translatable("minemenu.setting.MenuTypes." + this.name().charAt(0) + this.name().substring(1).toLowerCase());
     }
 }

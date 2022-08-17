@@ -16,7 +16,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
@@ -73,11 +73,11 @@ public class MineMenuFabricClient implements ClientModInitializer {
                     minemenuData = GsonUtil.fixEntryAmount(minemenuData);
                     try {
                         client.setScreenAndRender(new MineMenuSelectScreen(minemenuData,
-                                new TranslatableText("minemenu.default.title").getString(), null));
+                                Text.translatable("minemenu.default.title").getString(), null));
                     } catch (Exception e) {
                         client.setScreenAndRender(null);
                         assert client.player != null;
-                        client.player.sendMessage(new TranslatableText("minemenu.error.config"), false);
+                        client.player.sendMessage(Text.translatable("minemenu.error.config"), false);
                     }
 
                 }

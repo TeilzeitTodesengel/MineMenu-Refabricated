@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtHelper;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.InvalidIdentifierException;
 import net.minecraft.util.registry.Registry;
@@ -88,7 +88,7 @@ public class RandomUtil {
             e.printStackTrace();
             client.setScreenAndRender(null);
             assert client.player != null;
-            client.player.sendMessage(new TranslatableText("minemenu.error.config"), false);
+            client.player.sendMessage(Text.translatable("minemenu.error.config"), false);
         }
     }
 

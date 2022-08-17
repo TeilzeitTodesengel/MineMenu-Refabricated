@@ -19,7 +19,6 @@ import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.Matrix4f;
 
@@ -64,22 +63,20 @@ public class MineMenuSelectScreen extends Screen {
             repeatButton.setMessage(Text.of(repeatData.get("name").getAsString()));
         }
         else if (repeatButton.isHovered() && repeatData == null)  {
-            repeatButton.setMessage(new TranslatableText("minemenu.gui.noRepeat"));
+            repeatButton.setMessage(Text.translatable("minemenu.gui.noRepeat"));
         }
-        else repeatButton.setMessage(new TranslatableText("minemenu.gui.repeat"));
+        else repeatButton.setMessage(Text.translatable("minemenu.gui.repeat"));
     }
 
     protected void init() {
         keyBindings = Arrays.asList(client.options.allKeys);
         repeatButton = this.addDrawableChild(new ButtonWidget(this.width / 2 - 75, this.height - 35, 150, 20,
-                new TranslatableText("minemenu.gui.repeat"), (buttonWidget) -> {
+                Text.translatable("minemenu.gui.repeat"), (buttonWidget) -> {
             if (repeatData != null) this.handleTypes(repeatData);
         }));
 
         this.addDrawableChild(new ButtonWidget(this.width - 90 , this.height  - 35, 75, 20,
-                new TranslatableText("minemenu.gui.config"), (buttonWidget) -> {
-            client.setScreenAndRender(AutoConfig.getConfigScreen(Config.class, this).get());
-        }));
+                Text.translatable("minemenu.gui.config"), (buttonWidget) -> client.setScreenAndRender(AutoConfig.getConfigScreen(Config.class, this).get())));
     }
 
     @Override
@@ -160,7 +157,7 @@ public class MineMenuSelectScreen extends Screen {
                 drawDoughnutSegment(matrixstack, currentAngle + degrees / 2, currentAngle +
                         degrees, centerX, centerY, outerRadius + 5, innerRadius, primaryColor);
 
-                drawCenteredText(matrixstack, client.textRenderer, new TranslatableText(value.get("name").getAsString().trim()),
+                drawCenteredText(matrixstack, client.textRenderer, Text.translatable(value.get("name").getAsString().trim()),
                         centerX, centerY + outerRadius + 20, 0xFFFFFF);
 
             } else {
@@ -258,8 +255,11 @@ public class MineMenuSelectScreen extends Screen {
             double y = Math.cos(Math.toRadians(i)) * outerRingRadius;
             bufferBuilder.vertex(modelMatrix,  (float) (centerX + x), (float) (centerY - y), 0).color(f1, f2, f3, f).next();
         }
+        /* 1.18.X only
         bufferBuilder.end();
         BufferRenderer.draw(bufferBuilder);
+        */
+        Tessellator.getInstance().draw();
         RenderSystem.enableTexture();
         RenderSystem.disableBlend();
         //matrixStack.pop();
@@ -275,49 +275,40 @@ public class MineMenuSelectScreen extends Screen {
         updateRepeatData(type, value);
 
         switch (type) {
-            case "empty":
-                RandomUtil.openConfigScreen(this);
-                break;
-
-            case "category":
+            case "empty" -> RandomUtil.openConfigScreen(this);
+            case "category" -> {
                 datapath.add("data");
                 GsonUtil.saveJson(GsonUtil.fixEntryAmount(value.get("data").getAsJsonObject()));
-
                 client.setScreenAndRender(new MineMenuSelectScreen(value.get("data").getAsJsonObject(),
                         value.get("name").getAsString(), this));
-                break;
-
-
-            case "print":
+            }
+            case "print" -> {
                 close();
                 client.player.sendChatMessage(value.get("data").getAsString());
-                break;
-
-            case "printmany":
+            }
+            case "printmany" -> {
                 Thread printer = new Thread(() -> {
                     List<String> parts = Arrays.asList(value.get("data").getAsString().split(Config.get().minemenuFabric.multiPrintSeparator));
                     parts.forEach(s -> {
                         if (client.player != null) client.player.sendChatMessage(s);
                         try {
-                        Thread.sleep(Config.get().minemenuFabric.multiPrintDelay);
+                            Thread.sleep(Config.get().minemenuFabric.multiPrintDelay);
+                        } catch (InterruptedException ignore) {
                         }
-                        catch (InterruptedException ignore) { }
                     });
                 });
                 close();
                 printer.start();
-                break;
-
-            case "chatbox":
+            }
+            case "chatbox" -> {
                 close();
                 client.setScreenAndRender(new ChatScreen(value.get("data").getAsString()));
-                break;
-
-            case "clipboard":
+            }
+            case "clipboard" -> {
                 close();
                 this.client.keyboard.setClipboard(value.get("data").getAsString());
-                client.player.sendMessage(new TranslatableText("minemenu.select.copied"), true);
-                break;
+                client.player.sendMessage(Text.translatable("minemenu.select.copied"), true);
+            }
 
             /*case "keydetect":
                 if (client.currentScreen instanceof MineMenuSelectScreen) this.client.openScreen(null);
@@ -342,28 +333,24 @@ public class MineMenuSelectScreen extends Screen {
                 detectedPress.start();
                 break;*/
 
-            case "keyselect":
+            case "keyselect" -> {
                 KeyBinding tmpBinding = keyBindings.stream()
                         .filter(keyBindingstream -> keyBindingstream.getTranslationKey().equals(value.get("data")
                                 .getAsJsonObject().get("key").getAsString())).findFirst().get();
-
                 Thread press = new Thread(() -> {
                     int delay = value.get("data").getAsJsonObject().get("releaseDelay").getAsInt();
                     pressKey(delay != 25001 || !tmpBinding.isPressed(), tmpBinding);
                     try {
                         Thread.sleep(delay);
-                    }
-                    catch (InterruptedException e) {
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                     if (delay != 25001) pressKey(false, tmpBinding);
                 });
-
                 close();
                 press.start();
-                break;
-
-            case "link":
+            }
+            case "link" -> {
                 close();
                 String link = value.get("data").getAsString();
                 try {
@@ -372,9 +359,9 @@ public class MineMenuSelectScreen extends Screen {
                     new URI(link);
                     Util.getOperatingSystem().open(link);
                 } catch (Exception e) {
-                    client.player.sendMessage(new TranslatableText("minemenu.error.link"), true);
+                    client.player.sendMessage(Text.translatable("minemenu.error.link"), true);
                 }
-                break;
+            }
         }
     }
 
