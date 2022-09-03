@@ -304,6 +304,10 @@ public class MineMenuSelectScreen extends Screen {
                 close();
                 client.setScreenAndRender(new ChatScreen(value.get("data").getAsString()));
             }
+            case "command" -> {
+                close();
+                client.player.sendCommand(value.get("data").getAsString());
+            }
             case "clipboard" -> {
                 close();
                 this.client.keyboard.setClipboard(value.get("data").getAsString());

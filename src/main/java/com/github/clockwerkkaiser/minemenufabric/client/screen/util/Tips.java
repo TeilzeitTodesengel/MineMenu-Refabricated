@@ -5,6 +5,7 @@ import net.minecraft.util.Nameable;
 
 public enum Tips implements Nameable {
     REVERSE,
+    COMMAND,
     REPEATEDIT,
     PLAYERHEAD;
 

@@ -7,6 +7,7 @@ public enum MenuTypes implements Nameable {
     PRINT,
     PRINTMANY,
     CHATBOX,
+    COMMAND,
     CLIPBOARD,
     LINK,
     KEYSELECT,

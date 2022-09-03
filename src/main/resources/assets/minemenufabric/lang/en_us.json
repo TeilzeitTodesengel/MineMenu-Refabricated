@@ -30,6 +30,7 @@
   "minemenu.setting.itemconfigcycle.Skullowner": "Skullowner",
   "minemenu.setting.MenuTypes.Print": "Say",
   "minemenu.setting.MenuTypes.Printmany": "Say multiple",
+  "minemenu.setting.MenuTypes.Command": "Command",
   "minemenu.setting.MenuTypes.Clipboard": "Copy to Clipboard",
   "minemenu.setting.MenuTypes.Link": "Open Link",
   "minemenu.setting.MenuTypes.Category": "Category",
@@ -49,6 +50,7 @@
   "minemenu.gui.tip.Repeatedit": "Tip: You can edit your last action by right-clicking the repeat button!",
   "minemenu.gui.tip.Reverse": "Tip: You can cycle some settings in reverse by right-clicking them!",
   "minemenu.gui.tip.Playerhead": "Tip: You can use \"player_head\" as icon to use custom skulls!",
+  "minemenu.gui.tip.Command": "Tip: You do not need to type \"/\" when using the \"Command\" option.",
   "minemenu.gui.toggle": "Toggle",
   "minemenu.gui.config": "Config"
 }

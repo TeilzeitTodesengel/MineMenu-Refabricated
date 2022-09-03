@@ -256,6 +256,7 @@ public class MineMenuSettingsScreen extends Screen {
             case PRINT:
             case PRINTMANY:
             case LINK:
+            case COMMAND:
             case CLIPBOARD:
             case CHATBOX:
                 try {
@@ -463,6 +464,7 @@ public class MineMenuSettingsScreen extends Screen {
             case PRINT:
             case PRINTMANY:
             case CHATBOX:
+            case COMMAND:
             case CLIPBOARD:
             case LINK:
                 subDataOut = new JsonPrimitive(dataTextOut);
@@ -507,6 +509,7 @@ public class MineMenuSettingsScreen extends Screen {
             case PRINT:
             case PRINTMANY:
             case CLIPBOARD:
+            case COMMAND:
             case LINK:
             case CHATBOX:
                 this.itemData.setText(data.get("data").getAsString());
