@@ -24,9 +24,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RandomUtil {
-    private static GameProfile gameProfile;
 
-    public static me.shedaniel.math.Color getColor(String inp) {
+    public static Color getColor(String inp) {
         long colorLong = Long.decode(inp);
         float f = (float) (colorLong >> 24 & 0xff) / 255F;
         float f1 = (float) (colorLong >> 16 & 0xff) / 255F;
@@ -53,7 +52,7 @@ public class RandomUtil {
                     ItemStack finalOut = out;
                     Thread nbTater = new Thread(() -> {
                         NbtCompound skullTag = finalOut.getOrCreateNbt();
-                        gameProfile = new GameProfile(null, skullowner);
+                        GameProfile gameProfile = new GameProfile(null, skullowner);
                         SkullBlockEntity.loadProperties(gameProfile, RandomUtil::setGameProfile);
                         skullTag.put("SkullOwner", NbtHelper.writeGameProfile(new NbtCompound(), gameProfile));
                         MineMenuFabricClient.playerHeadCache.putIfAbsent(skullowner, finalOut);
@@ -75,7 +74,7 @@ public class RandomUtil {
     }
 
     public static boolean isSkullItem(ItemStack stack) {
-        return stack.getItem() instanceof BlockItem && ((net.minecraft.item.BlockItem)
+        return stack.getItem() instanceof BlockItem && ((BlockItem)
                 stack.getItem()).getBlock() instanceof AbstractSkullBlock;
     }
 
@@ -92,7 +91,6 @@ public class RandomUtil {
         }
     }
 
-    private static void setGameProfile(GameProfile gpf) {
-        gameProfile = gpf;
+    private static void setGameProfile(GameProfile gameProfile) {
     }
 }

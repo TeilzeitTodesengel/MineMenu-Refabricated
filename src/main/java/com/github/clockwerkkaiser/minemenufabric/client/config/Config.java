@@ -48,7 +48,7 @@ public class Config extends PartitioningSerializer.GlobalData {
 
         public String multiPrintSeparator = ";";
 
-        public int multiPrintDelay = 10;
+        public int multiPrintDelay = 1000;
 
         public boolean showTips = true;
 
