@@ -86,7 +86,6 @@ public class MineMenuSettingsScreen extends Screen {
     }
 
     protected void init() {
-        this.client.keyboard.setRepeatEvents(true);
 
         //---------------------------- NAME INPUT
 
@@ -105,20 +104,20 @@ public class MineMenuSettingsScreen extends Screen {
         this.addDrawableChild(this.iconDataText);
 
         this.iconDataYesNo = this.addDrawableChild(
-                new ButtonWidget(this.width / 2 - 100, 101, 200, 20, Text.of(""), (buttonWidget) -> {
+                ButtonWidget.builder(Text.of(""), (buttonWidget) -> {
                     this.iconDataBoolean = !iconDataBoolean;
                     this.saveIcon();
                     this.updateInput();
-        }));
+        }).build());
 
-        this.iconSettingType = this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, 80, 200,
-                20, iconConfigCycle.getName(), (buttonWidget) -> {
+        this.iconSettingType = this.addDrawableChild(ButtonWidget.builder(
+                iconConfigCycle.getName(), (buttonWidget) -> {
             this.saveIcon();
             iconConfigCycle = iconConfigCycle.next();
             if (!isSkull(iconItem) && iconConfigCycle == IconConfigOptions.SKULLOWNER) iconConfigCycle = iconConfigCycle.next();
             this.iconSettingType.setMessage(iconConfigCycle.getName());
             this.updateInput();
-        }));
+        }).build());
 
         //---------------------------- DATA INIPUT/TYPE
 
@@ -127,17 +126,16 @@ public class MineMenuSettingsScreen extends Screen {
         this.itemData.setMaxLength(32500);
         this.addDrawableChild(this.itemData);
 
-        this.keyBindButton = this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, 140, 200, 20,
+        this.keyBindButton = this.addDrawableChild(ButtonWidget.builder(
                 InputUtil.UNKNOWN_KEY.getLocalizedText(), (buttonWidget) -> {
             if (itemTypes == itemTypes.KEYSELECT) this.keyBindCycle(false);
-        }));
+        }).build());
 
-        this.itemType = this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, 180, 200,
-                20, itemTypes.getName(), (buttonWidget) -> {
+        this.itemType = this.addDrawableChild( ButtonWidget.builder( itemTypes.getName(), (buttonWidget) -> {
             itemTypes = itemTypes.next();
             this.itemType.setMessage(itemTypes.getName());
             this.updateInput();
-        }));
+        }).build());
 
         if (firstRun) {
             this.itemName.setText(localData.get("name").getAsString());
@@ -169,11 +167,11 @@ public class MineMenuSettingsScreen extends Screen {
 
         //---------------------------- DONE CANCEL
 
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, 200, 100, 20,
-                ScreenTexts.CANCEL, (buttonWidget) -> close(true)));
+        this.addDrawableChild(ButtonWidget.builder(
+                ScreenTexts.CANCEL, (buttonWidget) -> close(true)).build());
 
-        this.done = this.addDrawableChild(new ButtonWidget(this.width / 2, 200, 100, 20,
-                ScreenTexts.DONE, (buttonWidget) -> close(false)));
+        this.done = this.addDrawableChild(ButtonWidget.builder(
+                ScreenTexts.DONE, (buttonWidget) -> close(false)).build());
 
         this.updateInput();
     }
@@ -393,7 +391,6 @@ public class MineMenuSettingsScreen extends Screen {
     }
 
     private void close(boolean cancel) {
-        this.client.keyboard.setRepeatEvents(false);
         if (!cancel) applySettings();
         if (localDPath.size() >= 1) {
             if (localDPath.get(localDPath.size() - 1).equals("data")) {

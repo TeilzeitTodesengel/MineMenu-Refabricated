@@ -70,13 +70,13 @@ public class MineMenuSelectScreen extends Screen {
 
     protected void init() {
         keyBindings = Arrays.asList(client.options.allKeys);
-        repeatButton = this.addDrawableChild(new ButtonWidget(this.width / 2 - 75, this.height - 35, 150, 20,
+        repeatButton = this.addDrawableChild(ButtonWidget.builder(
                 Text.translatable("minemenu.gui.repeat"), (buttonWidget) -> {
             if (repeatData != null) this.handleTypes(repeatData);
-        }));
+        }).build());
 
-        this.addDrawableChild(new ButtonWidget(this.width - 90 , this.height  - 35, 75, 20,
-                Text.translatable("minemenu.gui.config"), (buttonWidget) -> client.setScreenAndRender(AutoConfig.getConfigScreen(Config.class, this).get())));
+        this.addDrawableChild(ButtonWidget.builder(
+                Text.translatable("minemenu.gui.config"), (buttonWidget) -> client.setScreenAndRender(AutoConfig.getConfigScreen(Config.class, this).get())).build());
     }
 
     @Override
@@ -233,7 +233,7 @@ public class MineMenuSelectScreen extends Screen {
         float f2 = (float) (color >> 8 & 0xff) / 255F;
         float f3 = (float) (color & 0xff) / 255F;
         //matrixStack.push();
-        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
         RenderSystem.enableBlend();
         RenderSystem.disableTexture();
         RenderSystem.defaultBlendFunc();
@@ -284,13 +284,13 @@ public class MineMenuSelectScreen extends Screen {
             }
             case "print" -> {
                 close();
-                client.player.sendChatMessage(value.get("data").getAsString(), null);
+                client.player.networkHandler.sendChatMessage(value.get("data").getAsString());
             }
             case "printmany" -> {
                 Thread printer = new Thread(() -> {
                     List<String> parts = Arrays.asList(value.get("data").getAsString().split(Config.get().minemenuFabric.multiPrintSeparator));
                     parts.forEach(s -> {
-                        if (client.player != null) client.player.sendChatMessage(s, null);
+                        if (client.player != null) client.player.networkHandler.sendChatMessage(s);
                         try {
                             Thread.sleep(Config.get().minemenuFabric.multiPrintDelay);
                         } catch (InterruptedException ignore) {
@@ -306,7 +306,7 @@ public class MineMenuSelectScreen extends Screen {
             }
             case "command" -> {
                 close();
-                client.player.sendCommand(value.get("data").getAsString());
+                client.player.networkHandler.sendCommand(value.get("data").getAsString());
             }
             case "clipboard" -> {
                 close();
