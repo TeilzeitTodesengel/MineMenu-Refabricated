@@ -20,7 +20,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Util;
-import net.minecraft.util.math.Matrix4f;
+import org.joml.Matrix4f;
 
 import java.net.URI;
 import java.net.URL;

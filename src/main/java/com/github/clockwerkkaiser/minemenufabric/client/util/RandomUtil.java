@@ -15,10 +15,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtHelper;
+import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.InvalidIdentifierException;
-import net.minecraft.util.registry.Registry;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -70,7 +70,7 @@ public class RandomUtil {
     }
 
     public static ItemStack itemStackFromString(String itemStack) {
-        return Registry.ITEM.get(new Identifier(itemStack)).getDefaultStack();
+        return Registries.ITEM.get(new Identifier(itemStack)).getDefaultStack();
     }
 
     public static boolean isSkullItem(ItemStack stack) {
